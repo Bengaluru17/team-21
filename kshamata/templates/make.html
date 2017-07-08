@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container" align="center" style="background-color: #a3e4d7; padding-bottom:20px; padding-top: 15px;"  >
+    <form method="post" action="{% url 'survey' %}">
+        {% csrf_token %}
+      <h2 style="padding-bottom: 15px"><b>SURVEY</b></h2>
+
+        <label style="font-size: medium"><strong>Name</strong><br>
+            <input type="text" class="form-control" name="name" required="" autofocus="" style="font-size: small"/>
+        </label><br><br>
+
+        <label style="font-size: medium"><strong>DOB</strong><br>
+            <input type="date" class="form-control" name="dob" required="" style="font-size: small">
+        </label><br><br>
+
+        <label style="font-size: medium"><strong>AADHAAR ID NO.</strong><br>
+            <input type="text" class="form-control" name="aadhar" required="" style="font-size: small">
+        </label><br><br>
+
+        <label style="font-size: medium"><strong>CONTACT DETAILS</strong><br>
+            <input type="number" class="form-control" name="detail" required="" style="font-size: small">
+        </label><br><br>
+
+        <label style="font-size: medium"><strong>EDUCATION</strong><br>
+            <input type="text" class="form-control" name="education" required="" style="font-size: small">
+        </label><br><br>
+
+        <label style="font-size: medium"><strong>Vocation Training Done</strong><br>
+            <input type="text" class="form-control" name="training" required="" style="font-size: small">
+        </label><br><br>
+
+        <label style="font-size: medium"><strong>Background</strong><br>
+            <input type="text" class="form-control" name="background" required="" style="font-size: small">
+        </label><br><br>
+
+        <label style="font-size: medium"><strong>Duration of staying in KTC/shelter  home</strong><br>
+            <input type="text" class="form-control" name="duration" required="" style="font-size: small">
+        </label><br><br>
+
+        <label style="font-size: medium"><strong>Current Salary</strong><br>
+            <input type="number" class="form-control" name="salary" required="" style="font-size: small">
+        </label><br><br>
+
+
+        <label style="font-size: medium"><strong>Current Location</strong><br>
+            <input type="text" class="form-control" name="location" required="" style="font-size: small">
+        </label><br><br>
+
+        <label style="font-size: medium"><strong>Future Plan</strong><br>
+            <input type="text" class="form-control" name="plans" required="" style="font-size: small">
+        </label><br><br>
+
+        <label style="font-size: medium"><strong>Remarks</strong><br>
+            <input type="text" class="form-control" name="remarks" required="" style="font-size: small">
+        </label><br><br>
+
+      <button class="btn btn-lg btn-primary btn-block" type="submit">SUBMIT SURVEY</button>
+        <br>
+    </form>
+    {% if check == "true" %}
+    <div class="alert alert-success alert-dismissable"><strong>DATA ADDED SUCCESFULLY</strong></div>
+    {% endif %}
+</div>
+
+
+{% endblock %}
