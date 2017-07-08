@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="container" align="center" style="background-color: #a3e4d7; padding-bottom:20px; padding-top: 15px;"  >
-    <form method="post" action="{% url 'survey' %}">
+    <form method="post" action="{% url 'addtrain' %}">
         {% csrf_token %}
       <h2 style="padding-bottom: 15px"><b>SURVEY</b></h2>
 
@@ -23,16 +23,20 @@
             <input type="number" class="form-control" name="detail" required="" style="font-size: small">
         </label><br><br>
 
-        <label style="font-size: medium"><strong>EDUCATION</strong><br>
-            <input type="text" class="form-control" name="education" required="" style="font-size: small">
-        </label><br><br>
-
         <label style="font-size: medium"><strong>Vocation Training Done</strong><br>
             <input type="text" class="form-control" name="training" required="" style="font-size: small">
         </label><br><br>
 
         <label style="font-size: medium"><strong>Background</strong><br>
             <input type="text" class="form-control" name="background" required="" style="font-size: small">
+        </label><br><br>
+
+        <label style="font-size: medium"><strong>Skills</strong><br>
+            <input type="text" class="form-control" name="skill" required="" style="font-size: small">
+        </label><br><br>
+
+        <label style="font-size: medium"><strong>Skills Rating</strong><br>
+            <input type="number" class="form-control" name="skill_rating" required="" style="font-size: small">
         </label><br><br>
 
         <label style="font-size: medium"><strong>Duration of staying in KTC/shelter  home</strong><br>
@@ -55,6 +59,11 @@
         <label style="font-size: medium"><strong>Remarks</strong><br>
             <input type="text" class="form-control" name="remarks" required="" style="font-size: small">
         </label><br><br>
+
+        <label style="font-size: medium"><strong>Date of Survey</strong><br>
+            <input type="date" class="form-control" name="date_survey" required="" style="font-size: small">
+        </label><br><br>
+
 
       <button class="btn btn-lg btn-primary btn-block" type="submit">SUBMIT SURVEY</button>
         <br>
