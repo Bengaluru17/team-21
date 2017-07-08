@@ -29,6 +29,9 @@ class Volunteer(models.Model):
     name = models.CharField(max_length=30,primary_key=True)
     women = models.ManyToManyField(Women)
 
+    def Women(self):
+            return "\n".join([p.name for p in self.women.all()])
+
     def __str__(self):
         return self.name
 
@@ -43,3 +46,6 @@ class Activity(models.Model):
     women_count = models.IntegerField()
     response_shelter = models.TextField(max_length=30, null=True, blank=True)
     respone_women = models.TextField(max_length=30, null=True, blank=True)
+
+    def women(self):
+            return "\n".join([p.name for p in self.target.all()])
