@@ -1,13 +1,134 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+    <style xmlns="http://www.w3.org/1999/html">
+.btn-sq-lg {
+  width: 150px !important;
+  height: 150px !important;
+    margin: 10px;
+}
+
+.btn-sq {
+  width: 100px !important;
+  height: 100px !important;
+  font-size: 10px;
+}
+
+.btn-sq-sm {
+  width: 50px !important;
+  height: 50px !important;
+  font-size: 10px;
+}
+
+.btn-sq-xs {
+  width: 25px !important;
+  height: 25px !important;
+  padding:2px;
+}
+
+    #myInput {
+    background-position: 10px 12px; /* Position the search icon */
+    background-repeat: no-repeat; /* Do not repeat the icon image */
+    width: 100%; /* Full-width */
+    font-size: 20px; /* Increase font-size */
+    padding: 12px 20px 12px 40px; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+    margin-bottom: 12px; /* Add some space below the input */
+}
+
+#myTable {
+    border-collapse: collapse; /* Collapse borders */
+    width: 100%; /* Full-width */
+    border: 1px solid #ddd; /* Add a grey border */
+    font-size: 15px; /* Increase font-size */
+    margin: auto;
+}
+
+#myTable th, #myTable td {
+    text-align: left; /* Left-align text */
+    padding: 12px;
+    border: 2px solid #000000   /* Add padding */
+}
+
+#myTable tr {
+    /* Add a bottom border to all table rows */
+    border: 2px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+    /* Add a grey background color to the table header and on hover */
+    background-color: #f1f1f1;
+    border: 2px solid #000000;
+}
+
+#myTable tr.header {
+    background-color: #1b4f72;
+    color: white;
+}
+
+
+</style>
+
 <div class="container">
 <div class="row">
-
 <div class="jumbotron">
     <h1>Hello, {{ request.user.username }}<strong><br>You are logged in as Volunteer</strong></h1><br>
     <p>You are on your Dashboard</p>
+
+</div>
+
+
+</div>
+<div class="col-md-1">
+    </div>
+<div class="col-lg-3"></div>
+</div>
+<div class="col-lg-1">
+</div>
+    <div class="col-lg-2">
+</div>
+<div class="col-lg-5">
+<div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <p>
+            <a href="{% url 'show' %}" class="btn btn-sq-lg btn-primary">
+                <i class="fa fa-user fa-5x"></i><br/>
+                <br> VOLUNTEER <br> LIST
+            </a>
+            <a href="{%  url 'survey' %}" class="btn btn-sq-lg btn-success">
+              <i class="fa fa-user fa-5x"></i><br/>
+              <br> INSERT <br>
+            </a>
+            <a href="#" class="btn btn-sq-lg btn-info">
+              <i class="fa fa-user fa-5x"></i><br/>
+              <br> UPDATE <br>
+            </a>
+            </p>
+        </div>
+	</div>
+</div>
+
+
 </div>
 </div>
 </div>
+<!--table id="myTable">
+  <tr class="header">
+    <th style="width:10%;">Name</th>
+    <th style="width:10%;">Women</th>
+  </tr>
+  <tr>
+    <td> {{  request.user.username }} </td>
+    <td>{% for women in request.user.username.women.all %}
+        {{ women }} <br>
+        {% endfor %}
+        </td>
+  </tr>
+</table-->
+
+
+
+
 {% endblock %}

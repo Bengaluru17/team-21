@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    #myInput {
+    background-position: 10px 12px; /* Position the search icon */
+    background-repeat: no-repeat; /* Do not repeat the icon image */
+    width: 100%; /* Full-width */
+    font-size: 20px; /* Increase font-size */
+    padding: 12px 20px 12px 40px; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+    margin-bottom: 12px; /* Add some space below the input */
+}
+
+#myTable {
+    border-collapse: collapse; /* Collapse borders */
+    width: 80%; /* Full-width */
+    border: 1px solid #ddd; /* Add a grey border */
+    font-size: 15px; /* Increase font-size */
+    margin: auto;
+}
+
+#myTable th, #myTable td {
+    text-align: left; /* Left-align text */
+    padding: 12px;
+    border: 2px solid #000000   /* Add padding */
+}
+
+#myTable tr {
+    /* Add a bottom border to all table rows */
+    border: 2px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+    /* Add a grey background color to the table header and on hover */
+    background-color: #f1f1f1;
+    border: 2px solid #000000;
+}
+
+#myTable tr.header {
+    background-color: #1b4f72;
+    color: white;
+}
+
+
+</style>
+
+
+<table id="myTable">
+  <tr class="header">
+    <th style="width:10%;">Name</th>
+    <th style="width:10%;">Women</th>
+  </tr>
+{% for x in vol %}
+  <tr>
+    <td>{{ x.name }}</td>
+    <td>{% for women in x.women.all %}
+        {{ women }} <br>
+        {% endfor %}
+    </td>
+  </tr>
+    {% endfor %}
+</table>
+{% endblock %}

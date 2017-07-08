@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    #myInput {
+    background-position: 10px 12px; /* Position the search icon */
+    background-repeat: no-repeat; /* Do not repeat the icon image */
+    width: 100%; /* Full-width */
+    font-size: 20px; /* Increase font-size */
+    padding: 12px 20px 12px 40px; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+    margin-bottom: 12px; /* Add some space below the input */
+}
+
+#myTable {
+    border-collapse: collapse; /* Collapse borders */
+    width: 85%; /* Full-width */
+    border: 1px solid #ddd; /* Add a grey border */
+    font-size: 12px; /* Increase font-size */
+    margin: auto;
+}
+
+#myTable th, #myTable td {
+    text-align: left; /* Left-align text */
+    padding: 12px;
+    border: 2px solid #000000   /* Add padding */
+}
+
+#myTable tr {
+    /* Add a bottom border to all table rows */
+    border: 2px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+    /* Add a grey background color to the table header and on hover */
+    background-color: #f1f1f1;
+    border: 2px solid #000000;
+}
+
+#myTable tr.header {
+    background-color: #1b4f72;
+    color: white;
+}
+
+.radio-inline-center {
+    font-size: 22px;
+    padding: 10px;
+}
+
+</style>
+
+    <script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, z, j;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  z = document.getElementsByName("optradio")
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+      for (j = 0; j < z.length; j++) {
+         if (z[j].checked) {
+          td = tr[i].getElementsByTagName("td")[j];
+          if (td) {
+              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                  tr[i].style.display = "";
+              } else {
+                  tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+      }
+}
+</script>
+<div class="container">
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+<div id="hola" style="text-align: center">
+    <label class="radio-inline-center " style="font-size: 15px;">
+      <input type="radio" name="optradio" value="0"> Name
+    </label>
+    <label class="radio-inline-center" style="font-size: 15px">
+      <input type="radio" name="optradio" value="1"> DOB
+    </label>
+    <label class="radio-inline-center" style="font-size: 15px">
+      <input type="radio" name="optradio" value="2">&nbsp;Aadhar_ID
+    </label>
+    <label class="radio-inline-center" style="font-size: 15px">
+      <input type="radio" name="optradio" value="2">&nbsp;Contact
+    </label>
+    <label class="radio-inline-center" style="font-size: 15px">
+      <input type="radio" name="optradio" value="2">&nbsp;Background
+    </label>
+    <label class="radio-inline-center" style="font-size: 15px">
+      <input type="radio" name="optradio" value="2">&nbsp;Time Of Stay
+    </label>
+    <label class="radio-inline-center" style="font-size: 15px">
+      <input type="radio" name="optradio" value="2">&nbsp;Skills
+    </label>
+    <label class="radio-inline-center" style="font-size: 15px">
+      <input type="radio" name="optradio" value="2">&nbsp;Trainings
+    </label>
+    <label class="radio-inline-center" style="font-size: 15px">
+      <input type="radio" name="optradio" value="2">&nbsp;Level_Of_Skill
+    </label>
+    <label class="radio-inline-center" style="font-size: 15px">
+      <input type="radio" name="optradio" value="2">&nbsp;Salary
+    </label>
+    <label class="radio-inline-center" style="font-size: 15px">
+      <input type="radio" name="optradio" value="2">&nbsp;Location
+    </label>
+    <label class="radio-inline-center" style="font-size: 15px">
+      <input type="radio" name="optradio" value="2">&nbsp;Future Plans
+    </label>
+    <label class="radio-inline-center" style="font-size: 15px">
+      <input type="radio" name="optradio" value="2">&nbsp;Remarks
+    </label>
+    <label class="radio-inline-center" style="font-size: 15px">
+      <input type="radio" name="optradio" value="2">&nbsp;Date Of Survey
+    </label>
+</div>
+<table id="myTable">
+  <tr class="header">
+    <th style="width:10%;">Name</th>
+    <th style="width:10%;">DOB</th>
+      <th style="width:10%;">Aadhar_ID</th>
+      <th style="width:10%;">Contact</th>
+      <th style="width:10%;">Background</th>
+      <th style="width:10%;">Duration Of Stay</th>
+      <th style="width:10%;">Skills</th>
+      <th style="width:10%;">Trainings</th>
+      <th style="width:10%;">Level_Of_Skill</th>
+      <th style="width:10%;">Current Salary</th>
+      <th style="width:10%;">Current Location</th>
+      <th style="width:10%;">Future Plans</th>
+      <th style="width:10%;">Remarks</th>
+      <th style="width:10%;">Date Of Survey</th>
+
+  </tr>
+    {% for x in wom %}
+  <tr>
+    <td>{{ x.name }}</td>
+    <td>{{ x.dob }}</td>
+  <td>{{ x.aadhar_id }}</td>
+  <td>{{ x.contact }}</td>
+  <td>{{ x.background }}</td>
+  <td>{{ x.time_of_stay }}</td>
+  <td>{{ x.skills }}</td>
+  <td>{{ x.trainings }}</td>
+      <td>{{ x.level_of_skill }}</td>
+  <td>{{ x.cur_salary }}</td>
+  <td>{{ x.cur_location }}</td>
+  <td>{{ x.future_plans }}</td>
+  <td>{{ x.remarks }}</td>
+  <td>{{ x.date_of_survey }}</td>
+  </tr>
+    {% endfor %}
+</table>
+</div>
+{% endblock %}
