@@ -23,3 +23,23 @@ class Women(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Volunteer(models.Model):
+    name = models.CharField(max_length=30,primary_key=True)
+    women = models.ManyToManyField(Women)
+
+    def __str__(self):
+        return self.name
+
+
+class Activity(models.Model):
+    name = models.CharField(max_length=20, primary_key=True)
+    start_date = models.DateField(blank=True, null=True)
+    end_date = models.DateField(blank=True, null=True)
+    location = models.CharField(max_length=30, blank=True, null=True)
+    purpose = models.CharField(max_length=30, blank=True, null=True)
+    target = models.ManyToManyField(Women)
+    women_count = models.IntegerField()
+    response_shelter = models.TextField(max_length=30, null=True, blank=True)
+    respone_women = models.TextField(max_length=30, null=True, blank=True)
